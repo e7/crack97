@@ -15,13 +15,14 @@ unix {
     DEFINES = "_POSIX_THREADS" "_POSIX_THREAD_SAFE_FUNCTIONS"
     DEFINES += "_REENTRANT"
     INCLUDEPATH = "$(QTDIR)/include" "include"
-    LIBS = "-lpthread" "-lrt" "-lopencv_core"
+    LIBS = "-lpthread" "-lrt" "-lopencv_core" "-lopencv_highgui"
 }
 INCLUDEPATH += "include" "tmp_src"
 
 # RESOURCES = "rc/chess.qrc"
 FORMS = "ui/main_window.ui"
-SOURCES = "src/main.cpp"
+HEADERS = "include/*.h"
+SOURCES = "src/*.cpp"
 DESTDIR = "dist"
 UI_DIR = "tmp_src"
 MOC_DIR = "tmp_src"

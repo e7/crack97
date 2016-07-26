@@ -4,45 +4,10 @@
 
 #include <opencv2/core/core.hpp>
 
-#include "singleton.h"
-#include "ui_main_window.h"
+#include "eye_window.h"
 
 
 e7::common::singleton_mng crack97::g_singleton_mng;
-
-
-// ***** QEyeWindow {{
-class QEyeWindow : public QMainWindow
-{
-public:
-    explicit QEyeWindow(void);
-    ~QEyeWindow(void);
-
-private:
-    Ui::MainWindow m_ui;
-};
-
-QEyeWindow::QEyeWindow(void)
-{
-    QApplication *qapp = reinterpret_cast<QApplication *>(
-        crack97::g_singleton_mng.get_instance("Crack97::QApplication")
-    );
-
-    if (NULL == qapp) {
-        ::abort();
-    }
-
-    m_ui.setupUi(this);
-
-    QObject::connect(m_ui.process, SIGNAL(clicked()), qapp, SLOT(quit()));
-
-    show();
-}
-
-QEyeWindow::~QEyeWindow(void)
-{
-}
-// }} QEyeWindow *****
 
 
 int main(int argc, char *argv[])

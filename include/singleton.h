@@ -2,8 +2,7 @@
 #define __CRACK97_SINGLETON_H__
 
 
-using std::map;
-using std::string;
+#include <QMap>
 
 
 namespace e7 {
@@ -11,7 +10,7 @@ namespace common {
 class singleton_mng
 {
 public:
-    int append(string const &name, void *p)
+    int append(QString const &name, void *p)
     {
         if (singleton_objs.end() != this->singleton_objs.find(name)) {
             return -1;
@@ -22,7 +21,7 @@ public:
         return 0;
     }
 
-    void *get_instance(string const &name)
+    void *get_instance(QString const &name)
     {
         if (singleton_objs.end() == this->singleton_objs.find(name)) {
             return NULL;
@@ -38,7 +37,7 @@ private:
     void operator delete[](void *p);
 
 private:
-    map<string, void *> singleton_objs;
+    QMap<QString, void *> singleton_objs;
 };
 }
 }
