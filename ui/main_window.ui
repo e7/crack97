@@ -72,10 +72,10 @@
       <item>
        <widget class="QScrollArea" name="scrollArea">
         <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOn</enum>
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
         <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOn</enum>
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
@@ -85,24 +85,18 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>909</width>
-           <height>704</height>
+           <width>920</width>
+           <height>715</height>
           </rect>
          </property>
          <widget class="QLabel" name="label_img">
           <property name="geometry">
            <rect>
-            <x>80</x>
-            <y>40</y>
-            <width>641</width>
-            <height>551</height>
+            <x>0</x>
+            <y>0</y>
+            <width>0</width>
+            <height>0</height>
            </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
           </property>
           <property name="text">
            <string>TextLabel</string>

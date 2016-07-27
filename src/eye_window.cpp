@@ -23,5 +23,7 @@ QEyeWindow::QEyeWindow(void)
         ui.process, SIGNAL(clicked(void)), this, SLOT(onProcess(void))
     );
 
+    this->label_img = new QLabel;
+
     show();
 }

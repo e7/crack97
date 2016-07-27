@@ -4,6 +4,7 @@
 
 #include <QDebug>
 #include <QFileDialog>
+#include <QLabel>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
@@ -22,6 +23,7 @@ public:
     }
 
 private:
+    QLabel *label_img;
     Ui::MainWindow ui;
 
 private slots:
@@ -40,8 +42,9 @@ private slots:
         QImage *image = new QImage(file_name);
         QScopedPointer<QImage> free_image(image);
 
-        ui.label_img->setPixmap(QPixmap::fromImage(*image));
-        ui.label_img->show();
+        this->label_img->setPixmap(QPixmap::fromImage(*image));
+        this->label_img->resize(QSize(image->width(), image->height()));
+        ui.scrollArea->setWidget(this->label_img);
     }
 
     void onProcess(void)
