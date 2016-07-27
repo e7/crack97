@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QFileDialog>
 #include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 #include "ui_main_window.h"
 #include "singleton.h"
@@ -21,7 +22,8 @@ public:
     }
 
 private:
-    cv::Mat image;
+    cv::Mat img;
+    int x;
     Ui::MainWindow m_ui;
 
 private slots:
@@ -32,6 +34,8 @@ private slots:
         ));
 
         qDebug(file_name.toAscii().data());
+        this->img = cv::imread(file_name.toAscii().data());
+        imshow("input", this->img);
     }
 
     void onProcess(void)

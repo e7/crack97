@@ -15,7 +15,7 @@ unix {
     DEFINES = "_POSIX_THREADS" "_POSIX_THREAD_SAFE_FUNCTIONS"
     DEFINES += "_REENTRANT"
     INCLUDEPATH = "$(QTDIR)/include" "include"
-    LIBS = "-lpthread" "-lrt" "-lopencv_core" "-lopencv_highgui"
+    LIBS = "-lpthread" "-lrt" "-lopencv_core" "-lopencv_highgui" "-lopencv_imgproc"
 }
 INCLUDEPATH += "include" "tmp_src"
 
