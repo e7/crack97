@@ -46,7 +46,11 @@ private slots:
 
     void onProcess(void)
     {
-        qDebug("afasdf");
+        int cur_val = ui.progress_bar->value();
+
+        if (cur_val < ui.progress_bar->maximum()) {
+            ui.progress_bar->setValue(cur_val + 1);
+        }
     }
 };
 #endif // __CRACK97_EYE_WINDOW_H__
