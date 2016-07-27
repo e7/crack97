@@ -22,20 +22,26 @@ public:
     }
 
 private:
-    cv::Mat img;
-    int x;
-    Ui::MainWindow m_ui;
+    Ui::MainWindow ui;
 
 private slots:
     void onOpenImage(void)
     {
         QString file_name(QFileDialog::getOpenFileName(
-            this, tr("open image"), ".", tr("image files (*.png *.jpg)")
+            this, tr("open image"), "/", tr("image files (*.png *.jpg)")
         ));
 
+        if (0 == file_name.size()) {
+            return;
+        }
+
         qDebug(file_name.toAscii().data());
-        this->img = cv::imread(file_name.toAscii().data());
-        imshow("input", this->img);
+
+        QImage *image = new QImage(file_name);
+        QScopedPointer<QImage> free_image(image);
+
+        ui.label_img->setPixmap(QPixmap::fromImage(*image));
+        ui.label_img->show();
     }
 
     void onProcess(void)

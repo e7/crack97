@@ -11,13 +11,16 @@ QEyeWindow::QEyeWindow(void)
         ::abort();
     }
 
-    m_ui.setupUi(this);
+    ui.setupUi(this);
 
     QObject::connect(
-        m_ui.open_image, SIGNAL(clicked(void)), this, SLOT(onOpenImage(void))
+        ui.exit, SIGNAL(clicked(void)), qapp, SLOT(quit(void))
     );
     QObject::connect(
-        m_ui.process, SIGNAL(clicked(void)), this, SLOT(onProcess(void))
+        ui.open_image, SIGNAL(clicked(void)), this, SLOT(onOpenImage(void))
+    );
+    QObject::connect(
+        ui.process, SIGNAL(clicked(void)), this, SLOT(onProcess(void))
     );
 
     show();
