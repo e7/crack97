@@ -24,6 +24,14 @@ QEyeWindow::QEyeWindow(void)
     );
 
     this->label_img = new QLabel;
+    ui.scrollArea->setWidget(this->label_img);
+
+    this->screen_shot_timer = new QTimer(this);
+    QObject::connect(
+        this->screen_shot_timer,
+        SIGNAL(timeout(void)), this, SLOT(onScreenShot(void))
+    );
+    this->screen_shot_timer->start(20);
 
     show();
 }

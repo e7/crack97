@@ -4,7 +4,10 @@
 
 #include <QDebug>
 #include <QFileDialog>
+#include <QTimer>
 #include <QLabel>
+#include <QDesktopWidget>
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
@@ -23,6 +26,7 @@ public:
     }
 
 private:
+    QTimer *screen_shot_timer;
     QLabel *label_img;
     Ui::MainWindow ui;
 
@@ -44,11 +48,18 @@ private slots:
 
         this->label_img->setPixmap(QPixmap::fromImage(*image));
         this->label_img->resize(QSize(image->width(), image->height()));
-        ui.scrollArea->setWidget(this->label_img);
+    }
+
+    void onScreenShot(void)
+    {
+        // 截屏
+        QPixmap screen(QPixmap::grabWindow(QApplication::desktop()->winId()));
+        this->label_img->setPixmap(screen);
     }
 
     void onProcess(void)
     {
+        // 控制滚动条
         int cur_val = ui.progress_bar->value();
 
         if (cur_val < ui.progress_bar->maximum()) {
