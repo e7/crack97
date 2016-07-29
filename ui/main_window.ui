@@ -53,6 +53,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="toggle_timer">
+        <property name="text">
+         <string>启停自动截图</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

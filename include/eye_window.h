@@ -26,6 +26,7 @@ public:
     }
 
 private:
+    int timer_resolution;
     QTimer *screen_shot_timer;
     QLabel *label_img;
     Ui::MainWindow ui;
@@ -55,6 +56,15 @@ private slots:
         // 截屏
         QPixmap screen(QPixmap::grabWindow(QApplication::desktop()->winId()));
         this->label_img->setPixmap(screen);
+    }
+
+    void onToggleTimer(void)
+    {
+        if (this->screen_shot_timer->isActive()) {
+            this->screen_shot_timer->stop();
+        } else {
+            this->screen_shot_timer->start(this->timer_resolution);
+        }
     }
 
     void onProcess(void)

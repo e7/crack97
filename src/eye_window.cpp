@@ -2,6 +2,7 @@
 
 
 QEyeWindow::QEyeWindow(void)
+    : timer_resolution(20)
 {
     QApplication *qapp = reinterpret_cast<QApplication *>(
         crack97::g_singleton_mng.get_instance("Crack97::QApplication")
@@ -22,6 +23,9 @@ QEyeWindow::QEyeWindow(void)
     QObject::connect(
         ui.process, SIGNAL(clicked(void)), this, SLOT(onProcess(void))
     );
+    QObject::connect(
+        ui.toggle_timer, SIGNAL(clicked(void)), this, SLOT(onToggleTimer(void))
+    );
 
     this->label_img = new QLabel;
     ui.scrollArea->setWidget(this->label_img);
@@ -31,7 +35,7 @@ QEyeWindow::QEyeWindow(void)
         this->screen_shot_timer,
         SIGNAL(timeout(void)), this, SLOT(onScreenShot(void))
     );
-    this->screen_shot_timer->start(20);
+    this->screen_shot_timer->start(this->timer_resolution);
 
     show();
 }
